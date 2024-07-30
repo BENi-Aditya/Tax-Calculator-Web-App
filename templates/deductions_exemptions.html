@@ -72,6 +72,10 @@
             border-radius: 5px;
             font-size: 1em;
         }
+        input[type="number"]::placeholder {
+            font-size: 0.9em;
+            color: #888;
+        }
         button {
             display: block;
             width: 100%;
@@ -108,19 +112,19 @@
         <form method="POST" action="{{ url_for('deductions_exemptions') }}">
             <div class="form-group">
                 <label for="section_80c">Deductions under Section 80C:</label>
-                <input type="number" step="0.01" name="section_80c" id="section_80c" required>
+                <input type="number" step="0.01" name="section_80c" id="section_80c" placeholder="Enter amount invested in ELSS, PPF, NSC, etc." required>
             </div>
             <div class="form-group">
                 <label for="section_80d">Deductions under Section 80D:</label>
-                <input type="number" step="0.01" name="section_80d" id="section_80d" required>
+                <input type="number" step="0.01" name="section_80d" id="section_80d" placeholder="Enter health insurance premium paid" required>
             </div>
             <div class="form-group">
                 <label for="section_24">Deductions under Section 24(b):</label>
-                <input type="number" step="0.01" name="section_24" id="section_24" required>
+                <input type="number" step="0.01" name="section_24" id="section_24" placeholder="Enter home loan interest paid" required>
             </div>
             <div class="form-group">
                 <label for="other_exemptions">Other Exemptions:</label>
-                <input type="number" step="0.01" name="other_exemptions" id="other_exemptions" required>
+                <input type="number" step="0.01" name="other_exemptions" id="other_exemptions" placeholder="Enter any other exemptions" required>
             </div>
             <button type="submit">Save and Continue</button>
         </form>
