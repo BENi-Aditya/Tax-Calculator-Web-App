@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #004d99;
+            color: #ffffff;
+            width: 200px; 
+            min-height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .sidebar .name {
+            font-family: 'Lobster', cursive; 
+            font-size: 1.4em;
+            font-weight: normal;
+            margin-bottom: 20px;
+            border-bottom: 2px dotted #ffffff; 
+            padding-bottom: 10px;
+        }
+        .sidebar .nav-links a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 15px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .sidebar .nav-links a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            flex: 1;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+        }
+        .summary-box {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .summary-item {
+            margin-bottom: 15px;
+        }
+        .summary-item label {
+            font-size: 1.1em;
+            color: #333;
+            font-family: 'Georgia', serif;
+        }
+        .summary-item p {
+            font-size: 1em;
+            color: #555;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #004d99;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="name">Tax Calculator</div>
+        <div class="nav-links">
+            <a href="/salary_income">Salary Income</a>
+            <a href="/income_house_property">House Property</a>
+            <a href="/income_other_sources">Other Sources</a>
+            <a href="/income_business_profession">Business/Profession</a>
+            <a href="/capital_gains">Capital Gains</a>
+            <a href="/deductions_exemptions">Deductions & Exemptions</a>
+            <a href="/summary">Summary</a>
+        </div>
+    </aside>
+    <div class="container">
+        <h1>Summary</h1>
+        <div class="summary-box">
+            <div class="summary-item">
+                <label>Name:</label>
+                <p>{{ summary.name }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Age:</label>
+                <p>{{ summary.age }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Financial Year:</label>
+                <p>{{ summary.financial_year }}</p>
+            </div>
+        </div>
+        <div class="summary-box">
+            <h2>Income</h2>
+            <div class="summary-item">
+                <label>Salary Income:</label>
+                <p>₹{{ "%.2f"|format(summary.salary_income) }}</p>
+            </div>
+            <div class="summary-item">
+                <label>House Property Income:</label>
+                <p>₹{{ "%.2f"|format(summary.house_property_income) }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Other Sources Income:</label>
+                <p>₹{{ "%.2f"|format(summary.other_income) }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Business/Profession Income:</label>
+                <p>₹{{ "%.2f"|format(summary.business_income) }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Capital Gains:</label>
+                <p>₹{{ "%.2f"|format(summary.capital_gains) }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Total Income:</label>
+                <p>₹{{ "%.2f"|format(summary.total_income) }}</p>
+            </div>
+        </div>
+        <div class="summary-box">
+            <h2>Deductions & Exemptions</h2>
+            <div class="summary-item">
+                <label>Deductions & Exemptions:</label>
+                <p>₹{{ "%.2f"|format(summary.deductions) }}</p>
+            </div>
+            <div class="summary-item">
+                <label>Taxable Income:</label>
+                <p>₹{{ "%.2f"|format(summary.taxable_income) }}</p>
+            </div>
+        </div>
+        <div class="summary-box">
+            <h2>Tax</h2>
+            <div class="summary-item">
+                <label>Total Tax:</label>
+                <p>₹{{ "%.2f"|format(summary.tax) }}</p>
+            </div>
+        </div>
+        <form method="POST" action="{{ url_for('generate_report') }}">
+            <button type="submit">Generate Report</button>
+        </form>
+    </div>
+</body>
+</html>
