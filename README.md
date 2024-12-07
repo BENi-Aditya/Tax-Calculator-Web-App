@@ -1,6 +1,11 @@
 <!-- README.md -->
 
+
 <h1 align="center" style="color: #4CAF50;">Tax-Calculator-Web-App</h1>
+
+<div align="center">
+  <img src="VirtualCA.png" alt="Tax Calculator" style="max-width: 100%; height: auto;" />
+</div>
 
 <p align="center" style="font-size: 1.2em;">A Python Flask web application designed to calculate taxes based on Indian tax laws for the financial year 2023-24. Simplify your tax calculations with precision and ease!</p>
 
